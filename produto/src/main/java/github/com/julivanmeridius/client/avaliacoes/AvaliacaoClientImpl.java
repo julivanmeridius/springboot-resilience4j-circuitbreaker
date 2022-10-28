@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 /**
  * Client para operacoes de Avaliacao
  * @author Julivan Silva
@@ -31,6 +33,7 @@ public class AvaliacaoClientImpl implements AvaliacaoClient {
 			.toUriString();
 	
 	@Override
+	@CircuitBreaker(name = "avaliacaoCB")
 	public List<AvaliacaoModel> buscarTodosPorProduto(Long productId) {
 		logger.info("### Executando Metodo: buscarTodosPorProduto() - productId: {}", productId);
 		final List<AvaliacaoModel> avaliacoes = executarRequisicao(productId);

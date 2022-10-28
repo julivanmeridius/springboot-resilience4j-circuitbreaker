@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import github.com.julivanmeridius.domain.Avaliacao;
 import github.com.julivanmeridius.repository.AvaliacaoRepository;
 
@@ -13,6 +15,7 @@ import github.com.julivanmeridius.repository.AvaliacaoRepository;
  * @author Julivan Silva
  *
  */
+@Component
 public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
 	private static final List<Avaliacao> AVALIACOES = new ArrayList<>();
